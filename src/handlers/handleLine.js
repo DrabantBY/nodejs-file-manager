@@ -10,7 +10,7 @@ const handleLine = async (line) => {
 			break;
 
 		case point === 'up' && data.length === 0:
-			process.chdir('.');
+			process.chdir('..');
 			break;
 
 		default:
