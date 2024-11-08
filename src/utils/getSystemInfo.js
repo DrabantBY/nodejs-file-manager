@@ -34,4 +34,4 @@ const getSystemInfo = ([arg]) => {
 	}
 };
 
-export default getOs;
+export default getSystemInfo;

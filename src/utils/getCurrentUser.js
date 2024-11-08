@@ -1,4 +1,4 @@
-export const getUser = () => {
+export const getCurrentUser = () => {
 	let [key, user] = process.argv.at(-1).split(/\=+/);
 
 	if (key !== '--username') {
@@ -8,4 +8,4 @@ export const getUser = () => {
 	return user || 'Stranger';
 };
 
-export default getUser;
+export default getCurrentUser;
