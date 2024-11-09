@@ -2,12 +2,8 @@ import { readdir } from 'node:fs/promises';
 import { showError } from './message.js';
 
 export const moveToDir = ([target]) => {
-	try {
-		const folder = target.replaceAll('*', ' ');
-		process.chdir(folder);
-	} catch {
-		showError();
-	}
+	const folder = target.replaceAll('*', ' ');
+	process.chdir(folder);
 };
 
 export const showFolderInside = async () => {
