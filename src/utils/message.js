@@ -15,5 +15,5 @@ export const showWrong = () => {
 };
 
 export const showFolder = () => {
-	console.log(`You are currently in ${process.cwd()}`);
+	console.log(`You are currently in ${process.cwd()}\n`);
 };

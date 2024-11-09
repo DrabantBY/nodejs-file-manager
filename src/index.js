@@ -19,9 +19,10 @@ if (user) {
 
 	readLine.on('line', handleLine);
 
-	readLine.on('SIGINT', () => {
+	readLine.on('SIGINT', process.exit);
+
+	process.on('exit', () => {
 		message.showGoodbye(user);
-		process.exit();
 	});
 } else {
 	message.showError();
