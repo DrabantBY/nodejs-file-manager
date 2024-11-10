@@ -1,8 +1,11 @@
 import { readdir } from 'node:fs/promises';
-import { showError } from './message.js';
+import { sep } from 'node:path';
+import addSpace from './addSpace.js';
 
 export const moveToDir = ([target]) => {
-	const folder = target.replaceAll('*', ' ');
+	const isRoot = /^[a-z]\:$/i.test(target);
+	const folder = isRoot ? target + sep : addSpace(target);
+
 	process.chdir(folder);
 };
 
