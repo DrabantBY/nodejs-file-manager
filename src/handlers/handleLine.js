@@ -18,7 +18,7 @@ const handleLine = async (line) => {
 				break;
 
 			case point === 'cd' && args.length === 1:
-				fileSystem.moveToDir(args);
+				fileSystem.changeDir(args);
 				break;
 
 			case (point === 'compress' || point === 'decompress') &&

@@ -1,6 +1,6 @@
 import { sep } from 'node:path';
 
-const moveToDir = ([target]) => {
+const changeDir = ([target]) => {
 	const isRoot = /^[a-z]\:$/i.test(target);
 
 	const folder = isRoot ? target + sep : target;
@@ -8,4 +8,4 @@ const moveToDir = ([target]) => {
 	process.chdir(folder);
 };
 
-export default moveToDir;
+export default changeDir;
