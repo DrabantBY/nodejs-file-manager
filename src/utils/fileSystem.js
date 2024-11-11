@@ -1,6 +1,6 @@
 import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { readdir, open } from 'node:fs/promises';
+import { readdir, open, mkdir } from 'node:fs/promises';
 import { sep } from 'node:path';
 
 import handleReadError from '../handlers/handleReadError.js';
@@ -60,4 +60,8 @@ export const readFile = ([target]) => {
 export const createFile = async ([target]) => {
 	const file = await open(target, 'wx');
 	await file.close();
+};
+
+export const createDir = async ([target]) => {
+	await mkdir(target);
 };

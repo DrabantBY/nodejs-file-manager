@@ -1,9 +1,9 @@
-import getSystemInfo from '../utils/getSystemInfo.js';
 import * as message from '../utils/message.js';
 import * as fileSystem from '../utils/fileSystem.js';
+import getSystemInfo from '../utils/getSystemInfo.js';
 import addSpace from './addSpace.js';
 
-const handleLine = async (line) => {
+const readeLine = async (line) => {
 	const [point, ...data] = line.trim().split(/\s+/);
 
 	const path = data.length > 0 ? data.map(addSpace) : data;
@@ -24,6 +24,10 @@ const handleLine = async (line) => {
 
 			case point === 'hash' && path.length === 1:
 				fileSystem.getFileHash(path);
+				break;
+
+			case point === 'mkdir' && path.length === 1:
+				await fileSystem.createDir(path);
 				break;
 
 			case point === 'ls' && path.length === 0:
@@ -52,4 +56,4 @@ const handleLine = async (line) => {
 	message.showFolder();
 };
 
-export default handleLine;
+export default readeLine;

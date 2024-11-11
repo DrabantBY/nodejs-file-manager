@@ -3,7 +3,7 @@ import { createInterface } from 'node:readline/promises';
 import { homedir } from 'node:os';
 
 import getCurrentUser from './utils/getCurrentUser.js';
-import handleLine from './handlers/handleLine.js';
+import readeLine from './handlers/readeLine.js';
 import * as message from './utils/message.js';
 
 const user = getCurrentUser();
@@ -17,7 +17,7 @@ if (user) {
 
 	const readLine = createInterface({ input, output });
 
-	readLine.on('line', handleLine);
+	readLine.on('line', readeLine);
 
 	readLine.on('SIGINT', process.exit);
 
