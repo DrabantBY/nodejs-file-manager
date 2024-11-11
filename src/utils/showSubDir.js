@@ -1,6 +1,6 @@
 import { readdir } from 'node:fs/promises';
 
-const showDirInside = async () => {
+const showSubDir = async () => {
 	const folder = process.cwd();
 
 	const content = await readdir(folder, {
@@ -25,4 +25,4 @@ const showDirInside = async () => {
 	console.table(table);
 };
 
-export default showDirInside;
+export default showSubDir;

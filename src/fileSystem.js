@@ -6,4 +6,4 @@ export { default as moveToDir } from './utils/moveToDir.js';
 export { default as readFile } from './utils/readFile.js';
 export { default as removeDir } from './utils/removeDir.js';
 export { default as renameFile } from './utils/renameFile.js';
-export { default as showDirInside } from './utils/showDirInside.js';
+export { default as showSubDir } from './utils/showSubDir.js';
