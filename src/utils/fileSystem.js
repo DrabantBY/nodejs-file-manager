@@ -4,11 +4,10 @@ import { readdir } from 'node:fs/promises';
 import { sep } from 'node:path';
 
 import { showError, showFolder } from './message.js';
-import addSpace from './addSpace.js';
 
 export const moveToDir = ([target]) => {
 	const isRoot = /^[a-z]\:$/i.test(target);
-	const folder = isRoot ? target + sep : addSpace(target);
+	const folder = isRoot ? target + sep : target;
 
 	process.chdir(folder);
 };
@@ -39,9 +38,7 @@ export const showFolderInside = async () => {
 };
 
 export const getFileHash = ([target]) => {
-	const file = addSpace(target);
-
-	const readStream = createReadStream(file);
+	const readStream = createReadStream(target);
 
 	readStream.on('error', () => {
 		showError();
