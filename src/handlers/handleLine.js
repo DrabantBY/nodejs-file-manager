@@ -21,6 +21,11 @@ const handleLine = async (line) => {
 				fileSystem.moveToDir(args);
 				break;
 
+			case (point === 'compress' || point === 'decompress') &&
+				args.length === 2:
+				fileSystem.zipFile(point, args);
+				break;
+
 			case point === 'hash' && args.length === 1:
 				fileSystem.getFileHash(args);
 				break;
