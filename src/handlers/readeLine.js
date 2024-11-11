@@ -1,6 +1,6 @@
-import * as message from '../utils/message.js';
-import * as fileSystem from '../utils/fileSystem.js';
-import getSystemInfo from '../utils/getSystemInfo.js';
+import * as message from '../message.js';
+import * as fileSystem from '../fileSystem.js';
+import getSystemInfo from '../utils/getOsInfo.js';
 import addSpace from './addSpace.js';
 
 const readeLine = async (line) => {

@@ -2,28 +2,25 @@ import { stdin as input, stdout as output } from 'node:process';
 import { createInterface } from 'node:readline/promises';
 import { homedir } from 'node:os';
 
-import getCurrentUser from './utils/getCurrentUser.js';
 import readeLine from './handlers/readeLine.js';
-import * as message from './utils/message.js';
+import * as message from './message.js';
 
-const user = getCurrentUser();
+let [key, value] = process.argv.at(-1).split(/\=+/);
 
-if (user) {
+if (key !== '--username') {
+	message.showError();
+} else {
+	const user = value || 'Stranger';
+
 	process.chdir(homedir());
-
-	message.showGreeting(user);
-
-	message.showFolder();
-
-	const readLine = createInterface({ input, output });
-
-	readLine.on('line', readeLine);
-
-	readLine.on('SIGINT', process.exit);
-
 	process.on('exit', () => {
 		message.showGoodbye(user);
 	});
-} else {
-	message.showError();
+
+	message.showGreeting(user);
+	message.showFolder();
+
+	const readLine = createInterface({ input, output });
+	readLine.on('line', readeLine);
+	readLine.on('SIGINT', process.exit);
 }
