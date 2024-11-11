@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { readdir } from 'node:fs/promises';
 import { sep } from 'node:path';
 
-import { showError, showFolder } from './message.js';
+import handleReadError from '../handlers/handleReadError.js';
 
 export const moveToDir = ([target]) => {
 	const isRoot = /^[a-z]\:$/i.test(target);
@@ -40,12 +40,19 @@ export const showFolderInside = async () => {
 export const getFileHash = ([target]) => {
 	const readStream = createReadStream(target);
 
-	readStream.on('error', () => {
-		showError();
-		showFolder();
-	});
+	readStream.on('error', handleReadError);
 
 	const hash = createHash('sha256');
 
 	readStream.pipe(hash).on('finish', () => console.log(hash.digest('hex')));
+};
+
+export const readFile = ([target]) => {
+	const readStream = createReadStream(target);
+
+	readStream.on('error', handleReadError);
+
+	readStream.on('end', () => console.log('\n'));
+
+	readStream.pipe(process.stdout);
 };
