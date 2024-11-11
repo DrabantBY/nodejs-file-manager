@@ -1,6 +1,6 @@
 import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { readdir } from 'node:fs/promises';
+import { readdir, open } from 'node:fs/promises';
 import { sep } from 'node:path';
 
 import handleReadError from '../handlers/handleReadError.js';
@@ -55,4 +55,9 @@ export const readFile = ([target]) => {
 	readStream.on('end', () => console.log('\n'));
 
 	readStream.pipe(process.stdout);
+};
+
+export const createFile = async ([target]) => {
+	const file = await open(target, 'wx');
+	await file.close();
 };

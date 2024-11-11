@@ -10,6 +10,10 @@ const handleLine = async (line) => {
 
 	try {
 		switch (true) {
+			case point === 'add' && path.length === 1:
+				await fileSystem.createFile(path);
+				break;
+
 			case point === 'cat' && path.length === 1:
 				fileSystem.readFile(path);
 				break;
@@ -35,7 +39,7 @@ const handleLine = async (line) => {
 				break;
 
 			case point === '.exit' && path.length === 0:
-				showFolder();
+				message.showFolder();
 				process.exit();
 
 			default:
