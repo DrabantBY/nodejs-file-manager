@@ -1,3 +1,4 @@
+export { default as copyFile } from './utils/copyFile.js';
 export { default as createDir } from './utils/createDir.js';
 export { default as createFile } from './utils/createFile.js';
 export { default as getOsInfo } from './utils/getOsInfo.js';
