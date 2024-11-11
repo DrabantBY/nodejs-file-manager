@@ -1,18 +1,19 @@
+import { readdir, open, mkdir, rm, rename, access } from 'node:fs/promises';
+import { sep, dirname, join } from 'node:path';
 import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { readdir, open, mkdir, rm } from 'node:fs/promises';
-import { sep } from 'node:path';
 
 import handleReadError from '../handlers/handleReadError.js';
 
 export const moveToDir = ([target]) => {
 	const isRoot = /^[a-z]\:$/i.test(target);
+
 	const folder = isRoot ? target + sep : target;
 
 	process.chdir(folder);
 };
 
-export const showFolderInside = async () => {
+export const showDirInside = async () => {
 	const folder = process.cwd();
 
 	const content = await readdir(folder, {
@@ -59,6 +60,7 @@ export const readFile = ([target]) => {
 
 export const createFile = async ([target]) => {
 	const file = await open(target, 'wx');
+
 	await file.close();
 };
 
@@ -68,4 +70,21 @@ export const createDir = async ([target]) => {
 
 export const removeDir = async ([target]) => {
 	await rm(target, { recursive: true });
+};
+
+export const renameFile = async ([source, name]) => {
+	const folder = dirname(source);
+	const target = join(folder, name);
+
+	try {
+		await access(target);
+
+		throw new Error();
+	} catch (err) {
+		if (err.code === 'ENOENT') {
+			await rename(source, target);
+		} else {
+			throw err;
+		}
+	}
 };

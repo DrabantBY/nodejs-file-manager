@@ -31,7 +31,7 @@ const readeLine = async (line) => {
 				break;
 
 			case point === 'ls' && path.length === 0:
-				await fileSystem.showFolderInside();
+				await fileSystem.showDirInside();
 				break;
 
 			case point === 'os' && path.length === 1:
@@ -40,6 +40,10 @@ const readeLine = async (line) => {
 
 			case point === 'rm' && path.length === 1:
 				await fileSystem.removeDir(path);
+				break;
+
+			case point === 'rn' && path.length === 2:
+				await fileSystem.renameFile(path);
 				break;
 
 			case point === 'up' && path.length === 0:
