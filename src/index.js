@@ -1,8 +1,7 @@
 import { stdin as input, stdout as output } from 'node:process';
 import { createInterface } from 'node:readline/promises';
 import { homedir } from 'node:os';
-
-import readeLine from './handlers/readeLine.js';
+import handleLine from './handlers/handleLine.js';
 import * as message from './message.js';
 
 let [key, value] = process.argv.at(-1).split(/\=+/);
@@ -21,6 +20,6 @@ if (key !== '--username') {
 	message.showFolder();
 
 	const readLine = createInterface({ input, output });
-	readLine.on('line', readeLine);
+	readLine.on('line', handleLine);
 	readLine.on('SIGINT', process.exit);
 }

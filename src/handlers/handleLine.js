@@ -1,12 +1,12 @@
 import * as message from '../message.js';
 import * as fileSystem from '../fileSystem.js';
 import getSystemInfo from '../utils/getOsInfo.js';
-import addSpace from './addSpace.js';
+import handleSpace from './handleSpace.js';
 
-const readeLine = async (line) => {
+const handleLine = async (line) => {
 	const [point, ...data] = line.trim().split(/\s+/);
 
-	const path = data.length > 0 ? data.map(addSpace) : data;
+	const path = data.length > 0 ? data.map(handleSpace) : data;
 
 	try {
 		switch (true) {
@@ -64,4 +64,4 @@ const readeLine = async (line) => {
 	message.showFolder();
 };
 
-export default readeLine;
+export default handleLine;
