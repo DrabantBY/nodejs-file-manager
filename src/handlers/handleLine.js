@@ -11,6 +11,10 @@ const handleLine = async (line) => {
 				fileSystem.moveToDir(data);
 				break;
 
+			case point === 'hash' && data.length === 1:
+				fileSystem.getFileHash(data);
+				break;
+
 			case point === 'ls' && data.length === 0:
 				await fileSystem.showFolderInside();
 				break;

@@ -1,5 +1,9 @@
+import { createReadStream } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { readdir } from 'node:fs/promises';
 import { sep } from 'node:path';
+
+import { showError, showFolder } from './message.js';
 import addSpace from './addSpace.js';
 
 export const moveToDir = ([target]) => {
@@ -32,4 +36,19 @@ export const showFolderInside = async () => {
 		});
 
 	console.table(table);
+};
+
+export const getFileHash = ([target]) => {
+	const file = addSpace(target);
+
+	const readStream = createReadStream(file);
+
+	readStream.on('error', () => {
+		showError();
+		showFolder();
+	});
+
+	const hash = createHash('sha256');
+
+	readStream.pipe(hash).on('finish', () => console.log(hash.digest('hex')));
 };
