@@ -38,6 +38,10 @@ const readeLine = async (line) => {
 				getSystemInfo(path);
 				break;
 
+			case point === 'rm' && path.length === 1:
+				await fileSystem.removeDir(path);
+				break;
+
 			case point === 'up' && path.length === 0:
 				process.chdir('..');
 				break;

@@ -1,6 +1,6 @@
 import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { readdir, open, mkdir } from 'node:fs/promises';
+import { readdir, open, mkdir, rm } from 'node:fs/promises';
 import { sep } from 'node:path';
 
 import handleReadError from '../handlers/handleReadError.js';
@@ -64,4 +64,8 @@ export const createFile = async ([target]) => {
 
 export const createDir = async ([target]) => {
 	await mkdir(target);
+};
+
+export const removeDir = async ([target]) => {
+	await rm(target, { recursive: true });
 };
