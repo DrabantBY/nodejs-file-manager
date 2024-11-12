@@ -1,15 +1,18 @@
 import { createReadStream } from 'node:fs';
 import { createHash } from 'node:crypto';
-import handleError from '../handlers/handleError.js';
 
-const getFileHash = ([target]) => {
-	const readStream = createReadStream(target);
+const getFileHash = ([target]) =>
+	new Promise((resolve, reject) => {
+		const readStream = createReadStream(target);
+		readStream.on('error', reject);
 
-	readStream.on('error', handleError);
+		const hash = createHash('sha256');
 
-	const hash = createHash('sha256');
-
-	readStream.pipe(hash).on('finish', () => console.log(hash.digest('hex')));
-};
+		readStream
+			.pipe(hash)
+			.setEncoding('hex')
+			.on('error', reject)
+			.on('finish', () => resolve(hash.read()));
+	}).then(console.log);
 
 export default getFileHash;
