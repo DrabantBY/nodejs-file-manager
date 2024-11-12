@@ -34,12 +34,16 @@ const handleLine = async (line) => {
 				await fileSystem.getFileHash(args);
 				break;
 
+			case point === 'ls' && args.length === 0:
+				await fileSystem.showSubDir();
+				break;
+
 			case point === 'mkdir' && args.length === 1:
 				await fileSystem.createDir(args);
 				break;
 
-			case point === 'ls' && args.length === 0:
-				await fileSystem.showSubDir();
+			case point === 'mv' && args.length === 2:
+				await fileSystem.moveFile(args);
 				break;
 
 			case point === 'os' && args.length === 1:
