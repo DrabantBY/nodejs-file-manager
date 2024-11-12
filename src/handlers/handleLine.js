@@ -14,7 +14,7 @@ const handleLine = async (line) => {
 				break;
 
 			case point === 'cat' && args.length === 1:
-				fileSystem.readFile(args);
+				await fileSystem.readFile(args);
 				break;
 
 			case point === 'cd' && args.length === 1:

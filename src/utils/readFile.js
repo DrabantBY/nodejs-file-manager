@@ -1,14 +1,19 @@
 import { createReadStream } from 'node:fs';
-import handleError from '../handlers/handleError.js';
 
-const readFile = ([target]) => {
-	const readStream = createReadStream(target);
+const readFile = ([target]) =>
+	new Promise((resolve, reject) => {
+		let data = '';
 
-	readStream.on('error', handleError);
+		const readStream = createReadStream(target);
 
-	readStream.on('end', () => console.log('\n'));
-
-	readStream.pipe(process.stdout);
-};
+		readStream
+			.on('error', reject)
+			.on('data', (chunk) => {
+				data += chunk;
+			})
+			.on('end', () => {
+				resolve(data);
+			});
+	}).then(console.log);
 
 export default readFile;
