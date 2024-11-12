@@ -22,11 +22,12 @@ const handleLine = async (line) => {
 				break;
 
 			case point === 'cp' && args.length === 2:
-				fileSystem.copyFile(args);
+				await fileSystem.copyFile(args);
+				break;
 
 			case (point === 'compress' || point === 'decompress') &&
 				args.length === 2:
-				fileSystem.zipFile(point, args);
+				await fileSystem.zipFile(point, args);
 				break;
 
 			case point === 'hash' && args.length === 1:
