@@ -7,7 +7,6 @@ const renameFile = async ([source, name]) => {
 
 	try {
 		await access(target);
-
 		throw new Error();
 	} catch (err) {
 		if (err.code === 'ENOENT') {

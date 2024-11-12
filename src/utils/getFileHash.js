@@ -8,11 +8,7 @@ const getFileHash = ([target]) =>
 
 		const hash = createHash('sha256');
 
-		readStream
-			.pipe(hash)
-			.setEncoding('hex')
-			.on('error', reject)
-			.on('finish', () => resolve(hash.read()));
+		readStream.pipe(hash).on('finish', () => resolve(hash.digest('hex')));
 	}).then(console.log);
 
 export default getFileHash;

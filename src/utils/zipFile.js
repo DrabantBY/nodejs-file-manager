@@ -17,10 +17,10 @@ const zipFile = (point, args) =>
 
 		if (point === 'compress') {
 			zip = createBrotliCompress();
-		}
-
-		if (point === 'decompress') {
+		} else if (point === 'decompress') {
 			zip = createBrotliDecompress();
+		} else {
+			reject();
 		}
 
 		readStream.pipe(zip).pipe(writeStream).on('finish', resolve);

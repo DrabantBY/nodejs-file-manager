@@ -2,9 +2,9 @@ import { createReadStream } from 'node:fs';
 
 const readFile = ([target]) =>
 	new Promise((resolve, reject) => {
-		let data = '';
-
 		const readStream = createReadStream(target);
+
+		let data = '';
 
 		readStream
 			.on('error', reject)
