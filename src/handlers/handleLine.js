@@ -1,11 +1,9 @@
 import * as message from '../message.js';
 import * as fileSystem from '../fileSystem.js';
-import handleSpace from './handleSpace.js';
+import handleArgs from './handleArgs.js';
 
 const handleLine = async (line) => {
-	const [point, ...data] = line.trim().split(/\s+/);
-
-	const args = handleSpace(data);
+	const [point, ...args] = handleArgs(line);
 
 	try {
 		switch (true) {
