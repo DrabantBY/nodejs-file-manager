@@ -1,19 +1,19 @@
-import * as fileSystem from './fileSystem.js';
+import * as manager from './manager.js';
 
 const pointers = {
-	add: fileSystem.createFile,
-	cat: fileSystem.readFile,
-	cd: fileSystem.changeDir,
-	cp: fileSystem.copyFile,
-	compress: fileSystem.zipFile,
-	decompress: fileSystem.unzipFile,
-	hash: fileSystem.getFileHash,
-	ls: fileSystem.showSubDir,
-	mkdir: fileSystem.createDir,
-	mv: fileSystem.moveFile,
-	os: fileSystem.getOsInfo,
-	rm: fileSystem.removeDir,
-	rn: fileSystem.renameFile,
+	add: manager.createFile,
+	cat: manager.readFile,
+	cd: manager.changeDir,
+	cp: manager.copyFile,
+	compress: manager.zipFile,
+	decompress: manager.unzipFile,
+	hash: manager.getFileHash,
+	ls: manager.showSubDir,
+	mkdir: manager.createDir,
+	mv: manager.moveFile,
+	os: manager.getOsInfo,
+	rm: manager.removeDir,
+	rn: manager.renameFile,
 	up: async () => {
 		process.chdir('..');
 	},
