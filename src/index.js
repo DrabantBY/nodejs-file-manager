@@ -1,8 +1,8 @@
 import { stdin as input, stdout as output } from 'node:process';
 import { createInterface } from 'node:readline/promises';
 import { homedir } from 'node:os';
-import handleLine from './handlers/handleLine.js';
-import * as message from './message.js';
+import parseLine from './handlers/parseLine.js';
+import * as message from './handlers/message.js';
 
 let [key, value] = process.argv.at(-1).split(/\=+/);
 
@@ -20,5 +20,5 @@ if (key !== '--username') {
 	message.showFolder();
 
 	const readLine = createInterface({ input, output });
-	readLine.on('line', handleLine);
+	readLine.on('line', parseLine);
 }

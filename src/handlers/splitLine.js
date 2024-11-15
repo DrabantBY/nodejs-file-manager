@@ -1,4 +1,4 @@
-const handleArgs = (line) => {
+const splitLine = (line) => {
 	if (line.length === 0) {
 		return [];
 	}
@@ -14,4 +14,4 @@ const handleArgs = (line) => {
 	);
 };
 
-export default handleArgs;
+export default splitLine;

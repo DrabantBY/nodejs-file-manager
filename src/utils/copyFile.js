@@ -1,9 +1,9 @@
 import { createReadStream, createWriteStream } from 'node:fs';
-import handleTarget from '../handlers/handleTarget.js';
+import joinPaths from '../handlers/joinPaths.js';
 
-const copyFile = (args) =>
+const copyFile = ([source, folder]) =>
 	new Promise((resolve, reject) => {
-		const [source, target] = handleTarget(args);
+		const target = joinPaths(source, folder);
 
 		const readStream = createReadStream(source);
 		readStream.on('error', reject);

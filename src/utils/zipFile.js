@@ -1,11 +1,10 @@
 import { createReadStream, createWriteStream } from 'node:fs';
 import { createBrotliCompress } from 'node:zlib';
+import joinPaths from '../handlers/joinPaths.js';
 
-import handleTarget from '../handlers/handleTarget.js';
-
-const zipFile = (args) =>
+const zipFile = ([source, folder]) =>
 	new Promise((resolve, reject) => {
-		const [source, target] = handleTarget(args);
+		const target = joinPaths(source, folder);
 
 		const readStream = createReadStream(source);
 		readStream.on('error', reject);

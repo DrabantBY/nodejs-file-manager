@@ -1,4 +1,4 @@
-import * as fileSystem from './fileSystem.js';
+import * as fileSystem from './utils/fileSystem.js';
 
 const pointersMap = {
 	add: fileSystem.createFile,
