@@ -1,6 +1,6 @@
 const handleArgs = (line) => {
 	if (line.length === 0) {
-		return line;
+		return [];
 	}
 
 	const args = line.trim().split(/\s+/);

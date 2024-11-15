@@ -21,5 +21,4 @@ if (key !== '--username') {
 
 	const readLine = createInterface({ input, output });
 	readLine.on('line', handleLine);
-	readLine.on('SIGINT', process.exit);
 }

@@ -5,6 +5,7 @@ export { default as createFile } from './utils/createFile.js';
 export { default as getOsInfo } from './utils/getOsInfo.js';
 export { default as getFileHash } from './utils/getFileHash.js';
 export { default as moveFile } from './utils/moveFile.js';
+export { default as unzipFile } from './utils/unzipFile.js';
 export { default as readFile } from './utils/readFile.js';
 export { default as removeDir } from './utils/removeDir.js';
 export { default as renameFile } from './utils/renameFile.js';

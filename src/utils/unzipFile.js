@@ -1,9 +1,9 @@
 import { createReadStream, createWriteStream } from 'node:fs';
-import { createBrotliCompress } from 'node:zlib';
+import { createBrotliDecompress } from 'node:zlib';
 
 import handleTarget from '../handlers/handleTarget.js';
 
-const zipFile = (args) =>
+const unzipFile = (args) =>
 	new Promise((resolve, reject) => {
 		const [source, target] = handleTarget(args);
 
@@ -13,9 +13,9 @@ const zipFile = (args) =>
 		const writeStream = createWriteStream(target, { flags: 'wx' });
 		writeStream.on('error', reject);
 
-		const zip = createBrotliCompress();
+		const zip = createBrotliDecompress();
 
 		readStream.pipe(zip).pipe(writeStream).on('finish', resolve);
 	});
 
-export default zipFile;
+export default unzipFile;

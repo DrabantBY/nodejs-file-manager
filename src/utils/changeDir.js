@@ -1,6 +1,6 @@
 import { sep } from 'node:path';
 
-const changeDir = ([target]) => {
+const changeDir = async ([target]) => {
 	const isRoot = /^[a-z]\:$/i.test(target);
 
 	const folder = isRoot ? target + sep : target;

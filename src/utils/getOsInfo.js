@@ -1,7 +1,7 @@
 import { EOL, cpus, userInfo } from 'node:os';
 import { showWrong } from '../message.js';
 
-const getOsInfo = ([arg]) => {
+const getOsInfo = async ([arg]) => {
 	switch (arg) {
 		case '--EOL':
 			console.log(`Default system End-Of-Line is ${JSON.stringify(EOL)}`);
