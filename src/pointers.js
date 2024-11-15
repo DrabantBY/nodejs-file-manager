@@ -1,6 +1,6 @@
-import * as fileSystem from './utils/fileSystem.js';
+import * as fileSystem from './fileSystem.js';
 
-const pointersMap = {
+const pointers = {
 	add: fileSystem.createFile,
 	cat: fileSystem.readFile,
 	cd: fileSystem.changeDir,
@@ -22,4 +22,4 @@ const pointersMap = {
 	},
 };
 
-export default pointersMap;
+export default pointers;

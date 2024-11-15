@@ -1,5 +1,5 @@
 import { EOL, cpus, userInfo } from 'node:os';
-import { showWrong } from '../handlers/message.js';
+import { showWrong } from '../message.js';
 
 const getOsInfo = async ([arg]) => {
 	switch (arg) {

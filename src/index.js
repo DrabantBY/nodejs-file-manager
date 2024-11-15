@@ -2,7 +2,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import { createInterface } from 'node:readline/promises';
 import { homedir } from 'node:os';
 import parseLine from './handlers/parseLine.js';
-import * as message from './handlers/message.js';
+import * as message from './message.js';
 
 let [key, value] = process.argv.at(-1).split(/\=+/);
 
