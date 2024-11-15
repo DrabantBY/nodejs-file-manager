@@ -16,9 +16,9 @@ const parseLine = async (line) => {
 		}
 	} catch {
 		message.showError();
+	} finally {
+		message.showFolder();
 	}
-
-	message.showFolder();
 };
 
 export default parseLine;
